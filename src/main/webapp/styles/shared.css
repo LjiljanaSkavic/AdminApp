@@ -1,0 +1,9 @@
+@charset "ISO-8859-1";
+
+.container {
+	margin-left: 25%;
+}
+
+button { 
+	cursor: pointer;
+}

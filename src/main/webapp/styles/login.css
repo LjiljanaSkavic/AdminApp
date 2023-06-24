@@ -1,0 +1,15 @@
+@charset "ISO-8859-1";
+
+.form-wrapper {
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 32px;
+    max-width: 30%;
+}
+
+.field-wrapper {
+	display: flex;
+	justify-content: center;
+	gap: 16px;
+}

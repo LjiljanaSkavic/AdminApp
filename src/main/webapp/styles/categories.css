@@ -1,0 +1,22 @@
+@charset "ISO-8859-1";
+
+
+.category-table {
+	  font-family: Arial, Helvetica, sans-serif;
+	  border-collapse: collapse;
+	  width: 100%;
+	  margin-bottom: 32px;
+}
+	
+.category-table td, .users-table th {
+	 border: 1px solid #ddd;
+	 padding: 8px;
+}
+	
+.category-table th {
+	 padding-top: 12px;
+	 padding-bottom: 12px;
+	 text-align: left;
+	 background-color: #04AA6D;
+	 color: white;
+}
