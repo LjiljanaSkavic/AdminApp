@@ -16,9 +16,9 @@ public class UserDAO {
 	private static final String SQL_SELECT_BY_USERNAME = "SELECT * FROM user WHERE username = ?";
 	private static final String SQL_SELECT_BY_ID = "SELECT * FROM user WHERE id = ?";
 	private static final String SQL_SELECT_USERS = "SELECT * FROM user";
-	private static final String SQL_INSERT = "INSERT INTO user (username, password, firstName, lastName, email, isLoggedIn, country_id, location_id ) VALUES (?,?,?,?,?,'0',?,?)";
+	private static final String SQL_INSERT = "INSERT INTO user (username, password, first_name, last_name, email, is_logged_in, country_id, location_id ) VALUES (?,?,?,?,?,'0',?,?)";
 	private static final String SQL_DELETE_USER = "DELETE FROM user where id=?";
-	private static final String SQL_UPDATE_USER = "UPDATE user SET username=?, password=?, firstName=?, lastName=?, email=?, country_id=?, location_id=? WHERE id=?";
+	private static final String SQL_UPDATE_USER = "UPDATE user SET username=?, password=?, first_name=?, last_name=?, email=?, country_id=?, location_id=? WHERE id=?";
 	
 	private static final String SQL_COUNT_USERS_FROM_COUNTRY = "SELECT COUNT(*) AS numOfPeopleFromCountryWithId FROM user u INNER JOIN country c ON u.country_id=c.id WHERE c.id=?";
 	private static final String SQL_COUNT_USERS_FROM_LOCATION = "SELECT COUNT(*) AS numOfPeopleFromLocationWithId FROM user u INNER JOIN location l ON u.location_id=l.id WHERE l.id=?";
@@ -59,7 +59,7 @@ public class UserDAO {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				users.add(new User(rs.getInt("id"), rs.getString("username"), rs.getString("password"),
-						rs.getString("firstName"), rs.getString("lastName"), rs.getString("email"), rs.getInt("isLoggedIn"), rs.getInt("country_id"), rs.getInt("location_id")));
+						rs.getString("first_name"), rs.getString("last_name"), rs.getString("email"), rs.getInt("is_logged_in"), rs.getInt("country_id"), rs.getInt("location_id")));
 			}
 			pstmt.close();
 		} catch (SQLException exp) {
@@ -81,7 +81,7 @@ public class UserDAO {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				user = new User(rs.getInt("id"), rs.getString("username"), rs.getString("password"),
-						rs.getString("firstName"), rs.getString("lastName"), rs.getString("email"), rs.getInt("isLoggedIn"), rs.getInt("country_id"), rs.getInt("location_id"));
+						rs.getString("first_name"), rs.getString("last_name"), rs.getString("email"), rs.getInt("is_logged_in"), rs.getInt("country_id"), rs.getInt("location_id"));
 			}
 			pstmt.close();
 		} catch (SQLException exp) {

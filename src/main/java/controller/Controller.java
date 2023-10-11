@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import beans.AccountBean;
 import beans.CategoryBean;
 import beans.UserBean;
 import beans.LocationBean;
@@ -53,14 +55,18 @@ public class Controller extends HttpServlet {
 		} else if (action.equals("login")) {
 			String username = request.getParameter("username");
 			String password = request.getParameter("password");
-			UserBean userBean = new UserBean();
-			if (userBean.loginFieldsFilled(username, password)) {
-				if (userBean.checkLogin(username, password)) {
-					session.setAttribute("userBean", userBean);
-					address = "/WEB-INF/pages/mainpage.jsp";
-				} else {
-					session.setAttribute("notification", "Wrong username or password");
-					address = "/WEB-INF/pages/login.jsp";
+			AccountBean accountBean = new AccountBean();
+			if (accountBean.loginFieldsFilled(username, password)) {
+				try {
+					if (accountBean.checkLogin(username, password)) {
+						session.setAttribute("accountBean", accountBean);
+						address = "/WEB-INF/pages/mainpage.jsp";
+					} else {
+						session.setAttribute("notification", "Wrong username or password");
+						address = "/WEB-INF/pages/login.jsp";
+					}
+				} catch (NoSuchAlgorithmException e) {
+					e.printStackTrace();
 				}
 			} else {
 				session.setAttribute("notification", "All fields are required.");
