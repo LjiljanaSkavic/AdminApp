@@ -32,7 +32,7 @@ body {
 	<div class="container">
 		<button id="add-user-button">Add user</button>
 		<div class="add-user-wrapper" style="display: none">
-			<h4>Add user</h4>
+			<span>Add user</span>
 			<form method="POST" action="?action=addUser">
 				Username <input type="text" name="username" id="username" /> <br></br>
 				First name <input type="text" name="firstName" id="firstName" /> <br></br>

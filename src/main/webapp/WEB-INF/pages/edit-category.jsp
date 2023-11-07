@@ -12,17 +12,18 @@ response.setHeader("Expires", "0"); // Proxies
 <meta charset="ISO-8859-1">
 <title>Edit category</title>
 <link href="styles/shared.css" rel="stylesheet">
+<link href="styles/edit-category.css" rel="stylesheet">
 <script src="scripts/notification.js" type="text/javascript"></script>
 </head>
 <body>
 	<jsp:include page="nav-bar.jsp" />
 	<jsp:include page="notification.jsp" />
 	<div class="container">
-		<h2>Edit category</h2>
-		<h4>
+		<span>Edit category</span>
+		<span>
 			Rename
-			<%=request.getParameter("categoryName")%></h4>
-		<h4>New category name :</h4>
+			<%=request.getParameter("categoryName")%></span>
+		<span>New category name :</span>
 		<form method="POST" action="?action=editCategory">
 			<div>
 				<input type="hidden" name="categoryId"

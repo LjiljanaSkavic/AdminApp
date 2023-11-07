@@ -13,6 +13,7 @@ response.setHeader("Expires", "0"); // Proxies
 <meta charset="ISO-8859-1">
 <title>Edit user</title>
 <link href="styles/shared.css" rel="stylesheet">
+<link href="styles/edit-user.css" rel="stylesheet">
 <script src="scripts/notification.js" type="text/javascript"></script>
 </head>
 <body>

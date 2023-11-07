@@ -1,7 +1,7 @@
 @charset "ISO-8859-1";
 
 .container {
-	margin-left: 25%;
+	margin-left: 14%;
 }
 
 button {
@@ -12,8 +12,8 @@ button {
 	width: 100%;
 	color: white;
 	background-color: #007bff;
-	padding: 14px 20px;
-	margin: 8px 0;
+	padding: 4px 4px;
+	margin: 4px 0;
 	border: none;
 	cursor: pointer;
 }
@@ -22,12 +22,12 @@ button {
 	background-color: #0056b3;
 }
 
-.edit-button{
+.edit-button {
 	width: 100%;
 	color: white;
 	background-color: #007bff;
-	padding: 14px 20px;
-	margin: 8px 0;
+	padding: 4px 4px;
+	margin: 4px 0;
 	border: none;
 	cursor: pointer;
 }
@@ -39,19 +39,19 @@ edit-button:hover{
 .table {
 	font-family: Arial, Helvetica, sans-serif;
 	border-collapse: collapse;
-	width: 100%;
-	margin-bottom: 32px;	
+	width: 98%;
+	margin-top: 16px;	
 }
 
 .table td,
 .table th {
 	border: 1px solid #ddd;
-	padding: 8px;
+	padding: 4px;
 }
 
 .table th {
-	padding-top: 12px;
-	padding-bottom: 12px;
+	padding-top: 4px;
+	padding-bottom: 4px;
 	text-align: left;
 	background-color: #007bff;
 	color: white;
