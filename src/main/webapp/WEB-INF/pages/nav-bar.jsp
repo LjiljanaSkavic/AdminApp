@@ -9,9 +9,9 @@
 </head>
 <body>
 	<ul>
-        <li><a class="<%= "users".equals(request.getParameter("action")) || "login".equals(request.getParameter("action")) ? "active" : "" %>" href="?action=users">Users</a></li>
-        <li><a class="<%= "categories".equals(request.getParameter("action")) ? "active" : "" %>" href="?action=categories">Categories</a></li>
-        <li><a class="<%= "logout".equals(request.getParameter("action")) ? "active" : "" %>" href="?action=logout">Logout</a></li>
+        <li><a class="<%=request.getParameter("action").toLowerCase().contains("user") || request.getParameter("action").contains("login") ? "active" : "" %>" href="?action=users">Users</a></li>
+        <li><a class="<%=request.getParameter("action").toLowerCase().contains("categor") ? "active" : "" %>" href="?action=categories">Categories</a></li>
+        <li><a class="<%=request.getParameter("action").toLowerCase().contains("logout") ? "active" : "" %>" href="?action=logout">Logout</a></li>
     </ul>
 </body>
 </html>
