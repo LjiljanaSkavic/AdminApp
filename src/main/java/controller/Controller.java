@@ -148,9 +148,7 @@ public class Controller extends HttpServlet {
 						int newLocationId = locationBean.addLocationAndReturnId(new Location(0, streetAddress,
 								Integer.parseInt(streetNumber), postalCode, city, newCountryId));
 						newUser.setLocationId(newLocationId);
-
 					}
-
 					if (userBean.add(newUser)) {
 						session.setAttribute("notification", new Notification("Registration success!", "success"));
 					}
