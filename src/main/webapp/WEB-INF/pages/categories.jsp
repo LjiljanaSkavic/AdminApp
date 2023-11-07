@@ -25,7 +25,7 @@ response.setHeader("Expires", "0"); // Proxies
 	<jsp:include page="nav-bar.jsp" />
 	<jsp:include page="notification.jsp" />
 	<div class="container">
-		<button id="add-category-button">Add categories</button>
+		<button id="add-category-button" class="add-button">Add categories</button>
 		<div class="add-categories-wrapper" style="display: none">
 			<form method="POST" action="?action=newCategory">
 				<div class="add-category-wrapper">

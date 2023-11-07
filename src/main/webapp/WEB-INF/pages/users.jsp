@@ -30,7 +30,7 @@ body {
 	<jsp:include page="nav-bar.jsp" />
 	<jsp:include page="notification.jsp" />
 	<div class="container">
-		<button id="add-user-button">Add user</button>
+		<button id="add-user-button" class="add-button">Add user</button>
 		<div class="add-user-wrapper" style="display: none">
 			<span>Add user</span>
 			<form method="POST" action="?action=addUser">
