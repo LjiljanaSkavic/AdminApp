@@ -10,11 +10,12 @@ public class Location implements Serializable {
 	private int streetNumber;
 	private String postalCode;
 	private String city;
-	
+
 	private int countryId;
 
-	public Location() {}
-	
+	public Location() {
+	}
+
 	public Location(int id) {
 		this.id = id;
 	}

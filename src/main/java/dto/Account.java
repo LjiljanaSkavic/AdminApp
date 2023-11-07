@@ -1,18 +1,18 @@
 package dto;
 
 public class Account {
-	
+
 	private int id;
 	private String username;
 	private String password;
 	private String firstName;
 	private String lastName;
 	private int accountTypeId;
-	
-	public Account() {}
-	
-	public Account(int id, String username, String password, String firstName, String lastName,
-			int accountTypeId) {
+
+	public Account() {
+	}
+
+	public Account(int id, String username, String password, String firstName, String lastName, int accountTypeId) {
 		super();
 		this.id = id;
 		this.username = username;

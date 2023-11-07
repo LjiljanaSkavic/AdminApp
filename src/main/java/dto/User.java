@@ -1,7 +1,6 @@
 package dto;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 public class User implements Serializable {
 
@@ -13,16 +12,18 @@ public class User implements Serializable {
 	private String lastName;
 	private String email;
 	private int isLoggedIn;
-	
+
 	private int countryId;
 	private int locationId;
-	
+
 	private Country country;
 	private Location location;
-	
-	public User() {}
-	
-	public User(int id, String username, String password, String firstName, String lastName, String email, int isLoggedIn, int countryId, int locationId) {
+
+	public User() {
+	}
+
+	public User(int id, String username, String password, String firstName, String lastName, String email,
+			int isLoggedIn, int countryId, int locationId) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -34,8 +35,9 @@ public class User implements Serializable {
 		this.countryId = countryId;
 		this.locationId = locationId;
 	}
-	
-	public User(int id, String username, String password, String firstName, String lastName, String email, int isLoggedIn) {
+
+	public User(int id, String username, String password, String firstName, String lastName, String email,
+			int isLoggedIn) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -45,7 +47,7 @@ public class User implements Serializable {
 		this.email = email;
 		this.isLoggedIn = isLoggedIn;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -85,7 +87,7 @@ public class User implements Serializable {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	
+
 	public String getEmail() {
 		return email;
 	}
@@ -93,7 +95,7 @@ public class User implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 	public int getIsLoggedIn() {
 		return isLoggedIn;
 	}
@@ -101,7 +103,7 @@ public class User implements Serializable {
 	public void setIsLoggedIn(int isLoggedIn) {
 		this.isLoggedIn = isLoggedIn;
 	}
-	
+
 	public Country getCountry() {
 		return country;
 	}

@@ -1,7 +1,6 @@
 package dto;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 public class Country implements Serializable {
 
@@ -9,12 +8,13 @@ public class Country implements Serializable {
 	private int id;
 	private String name;
 
-	public Country() {}
-	
+	public Country() {
+	}
+
 	public Country(int id) {
 		this.id = id;
 	}
-	
+
 	public Country(int id, String name) {
 		super();
 		this.id = id;

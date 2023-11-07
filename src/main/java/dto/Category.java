@@ -1,16 +1,16 @@
 package dto;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 public class Category implements Serializable {
-	
+
 	private static final long serialVersionUID = -7806514614961828322L;
 	private int id;
 	private String name;
-	
-	public Category() {}
-	
+
+	public Category() {
+	}
+
 	public Category(int id, String name) {
 		super();
 		this.id = id;

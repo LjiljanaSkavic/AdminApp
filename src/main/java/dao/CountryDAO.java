@@ -15,7 +15,7 @@ public class CountryDAO {
 	private static final String SQL_INSERT_COUNTRY = "INSERT INTO country (name) VALUES (?)";
 	private static final String SQL_SELECT_COUNTRY_WITH_ID = "SELECT * FROM country WHERE id = ?";
 	private static final String SQL_SELECT_COUNTRY_WITH_NAME = "SELECT * FROM country WHERE name=?";
-	private static final String  SQL_DELETE_COUNTRY = "DELETE FROM country WHERE id=?";
+	private static final String SQL_DELETE_COUNTRY = "DELETE FROM country WHERE id=?";
 
 	public CountryDAO() {
 	}
@@ -129,7 +129,7 @@ public class CountryDAO {
 		}
 		return id;
 	}
-	
+
 	public static boolean delete(int id) {
 		boolean idDeleted = false;
 		Connection connection = null;

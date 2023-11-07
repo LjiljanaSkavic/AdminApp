@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,10 +9,9 @@
 </head>
 <body>
 	<ul>
-		<li><a class="active" href="?action=home">Home</a></li>
-	  	<li><a href="?action=users">Users</a></li>
-		<li><a href="?action=categories">Categories</a></li>
-		<li><a href="?action=logout">Logout</a></li>
-	</ul>
+        <li><a class="<%= "users".equals(request.getParameter("action")) || "login".equals(request.getParameter("action")) ? "active" : "" %>" href="?action=users">Users</a></li>
+        <li><a class="<%= "categories".equals(request.getParameter("action")) ? "active" : "" %>" href="?action=categories">Categories</a></li>
+        <li><a class="<%= "logout".equals(request.getParameter("action")) ? "active" : "" %>" href="?action=logout">Logout</a></li>
+    </ul>
 </body>
 </html>
