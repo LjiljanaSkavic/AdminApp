@@ -16,41 +16,45 @@ response.setHeader("Expires", "0"); // Proxies
 <head>
 <meta charset="ISO-8859-1">
 <title>Categories</title>
-<link href="styles/shared.css" rel="stylesheet">
-<link href="styles/categories.css" rel="stylesheet">
-<script src="scripts/notification.js" type="text/javascript"></script>
 <style>
 body {
 	margin: 0;
 	padding: 0;
 }
 </style>
+<link href="styles/shared.css" rel="stylesheet">
+<link href="styles/categories.css" rel="stylesheet">
+<script src="scripts/notification.js" type="text/javascript"></script>
+<script src="scripts/toggle-add-categories.js" type="text/javascript"></script>
 </head>
 <body>
 	<jsp:include page="nav-bar.jsp" />
 	<jsp:include page="notification.jsp" />
 	<div class="container">
-		<form method="POST" action="?action=newCategory">
-			<h4>ADD CATEGORY</h4>
-			<span>Category name</span> <input type="text" name="newCategory"
-				id="newCategory" />
-			<button type="submit">Save</button>
-			<h3><%=session.getAttribute("notification") != null ? session.getAttribute("notification").toString() : ""%></h3>
-		</form>
+		<button id="add-category-button">Add categories</button>
+		<div class="add-category-wrapper" style="display: none">
+			<form method="POST" action="?action=newCategory">
+				<h4>ADD CATEGORY</h4>
+				<span>Category name</span> <input type="text" name="newCategory"
+					id="newCategory" />
+				<button type="submit" id="save-category-button">Save</button>
+				<h3><%=session.getAttribute("notification") != null ? session.getAttribute("notification").toString() : ""%></h3>
+			</form>
 
-		<form method="POST" action="?action=addSubcategory">
-			<h4>ADD SUBCATEGORY</h4>
-			<select name="parentCategorySelect">
-				<option value="">Select parent category</option>
+			<form method="POST" action="?action=addSubcategory">
+				<h4>ADD SUBCATEGORY</h4>
+				<select name="parentCategorySelect">
+					<option value="">Select parent category</option>
 
-				<%
-				for (Category category : categoryBean.getAllCategories())
-					out.print("<option value=" + category.getId() + ">" + category.getName() + "</option>");
-				%>
-			</select> <span>Subcategory name</span> <input type="text"
-				name="newSubcategoryName" id="newSubcategory" />
-			<button type="submit">Save</button>
-		</form>
+					<%
+					for (Category category : categoryBean.getAllCategories())
+						out.print("<option value=" + category.getId() + ">" + category.getName() + "</option>");
+					%>
+				</select> <span>Subcategory name</span> <input type="text"
+					name="newSubcategoryName" id="newSubcategory" />
+				<button id="save-subcategory-button" type="submit">Save</button>
+			</form>
+		</div>
 		<table class="table">
 			<tr>
 				<th>Name</th>

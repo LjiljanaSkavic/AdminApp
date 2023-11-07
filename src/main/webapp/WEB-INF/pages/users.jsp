@@ -106,8 +106,7 @@ body {
 	if (notification != null) {
 	%>
 	<script>
-    showNotification('<%=notification.getMessage()%>', '<%=notification.getType()%>
-		');
+    showNotification('<%=notification.getMessage()%>', '<%=notification.getType()%>');
 	</script>
 	<%
 	}
