@@ -18,6 +18,7 @@ response.setHeader("Expires", "0"); // Proxies
 <link href="styles/shared.css" rel="stylesheet">
 <link href="styles/users.css" rel="stylesheet">
 <script src="scripts/notification.js" type="text/javascript"></script>
+<script src="scripts/notify-cancel.js" type="text/javascript"></script>
 <script src="scripts/toggle-add-user.js" type="text/javascript"></script>
 <style>
 body {
@@ -45,6 +46,7 @@ body {
 				<br></br> Street number <input type="number" name="streetNumber"
 					id="streetNumber" /> <br></br> Postal code <input type="text"
 					name="postalCode" id="postalCode" /> <br></br>
+					<button type="submit" class="users-cancel-button" name="cancel">Cancel</button>
 				<button type="submit" id="save-user-button" name="saveUser">Save</button>
 			</form>
 		</div>

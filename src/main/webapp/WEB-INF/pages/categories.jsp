@@ -25,18 +25,21 @@ response.setHeader("Expires", "0"); // Proxies
 	<jsp:include page="nav-bar.jsp" />
 	<jsp:include page="notification.jsp" />
 	<div class="container">
-		<button id="add-category-button" class="add-button">Add categories</button>
+		<button id="add-category-button" class="add-button">Add
+			categories</button>
 		<div class="add-categories-wrapper" style="display: none">
 			<form method="POST" action="?action=newCategory">
 				<div class="add-category-wrapper">
 					<h3>ADD CATEGORY</h3>
 					<span>Category name</span> <input type="text" name="newCategory"
 						id="newCategory" />
-					<button type="submit" id="save-category-button">Save</button>
+					<button type="submit" id="cancel-add-category"
+						name="cancelAddCategory">Cancel</button>
+					<button type="submit" name=""addCategory id="save-category-button">Save</button>
 				</div>
 			</form>
 
-			<form method="POST" action="?action=addSubcategory">
+			<form method="POST" action="?action=newSubcategory">
 				<div class="add-subcategory-wrapper">
 					<h3>ADD SUBCATEGORY</h3>
 					<select name="parentCategorySelect">
@@ -48,7 +51,9 @@ response.setHeader("Expires", "0"); // Proxies
 						%>
 					</select> <span>Subcategory name</span> <input type="text"
 						name="newSubcategoryName" id="newSubcategory" />
-					<button id="save-subcategory-button" type="submit">Save</button>
+						<button type="submit" id="cancel-add-subcategory"
+						name="cancelAddSubcategory">Cancel</button>
+					<button id="save-subcategory-button" type="submit" name="addSubcategory">Save</button>
 				</div>
 			</form>
 		</div>
@@ -93,7 +98,8 @@ response.setHeader("Expires", "0"); // Proxies
 	if (notification != null) {
 	%>
 	<script>
-    showNotification('<%=notification.getMessage()%>', '<%=notification.getType()%>');
+    showNotification('<%=notification.getMessage()%>', '<%=notification.getType()%>
+		');
 	</script>
 	<%
 	}

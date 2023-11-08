@@ -77,91 +77,103 @@ public class Controller extends HttpServlet {
 		} else if (action.equals("categories")) {
 			address = "/WEB-INF/pages/categories.jsp";
 		} else if (action.equals("newCategory")) {
-			CategoryBean categoryBean = new CategoryBean();
-			String name = request.getParameter("newCategory");
-			if (name == "") {
-				session.setAttribute("notification", new Notification("Please type categry name.", "warning"));
-			} else if (categoryBean.categoryExists(name)) {
-				session.setAttribute("notification", new Notification("Category already exist.", "warning"));
-			} else {
-				categoryBean.addCategory(new Category(0, name));
-				session.setAttribute("notification", new Notification("Category successfully added.", "success"));
-			}
-			address = "/WEB-INF/pages/categories.jsp";
-		} else if (action.equals("addSubcategory")) {
-			System.out.println("subcategory");
-			CategoryBean categoryBean = new CategoryBean();
-			String newSubscategoryName = request.getParameter("newSubcategoryName");
-			String selectedSubcategory = request.getParameter("parentCategorySelect");
-			int parentCategoryId = Integer.parseInt(selectedSubcategory);
-			if (selectedSubcategory == null) {
-				session.setAttribute("notification", new Notification("Please select parent category.", "warning"));
-			} else if (newSubscategoryName == null) {
-				session.setAttribute("notification", new Notification("Please type subcategory name.", "warning"));
-			} else {
-				categoryBean.addSubcategory(parentCategoryId, new Category(0, newSubscategoryName));
-				address = "/WEB-INF/pages/categories.jsp";
-				session.setAttribute("notification", new Notification("Subcategory successfully added.", "success"));
-			}
-		} else if (action.equals("addUser")) {
-			UserBean userBean = new UserBean();
-			CountryBean countryBean = new CountryBean();
-			LocationBean locationBean = new LocationBean();
-
-			String username = request.getParameter("username");
-			String firstName = request.getParameter("firstName");
-			String lastName = request.getParameter("lastName");
-			String password = request.getParameter("password");
-			String email = request.getParameter("email");
-
-			String countryName = request.getParameter("country");
-			String city = request.getParameter("city");
-			String streetAddress = request.getParameter("streetAddress");
-			String streetNumber = request.getParameter("streetNumber");
-			String postalCode = request.getParameter("postalCode");
-
-			if (userBean.allFieldsFilled(username, password, firstName, lastName, email, countryName, city,
-					streetAddress, streetNumber, postalCode)) {
-				if (!userBean.isUsernameTeaken(username)) {
-					User newUser = new User(0, username, password, firstName, lastName, email, 0);
-					newUser.setCountryId(-1);
-					newUser.setLocationId(-1);
-
-					Country country = countryBean.getCountryWithName(countryName);
-					if (country != null) {
-						// country exists, check if location exists
-						newUser.setCountryId(country.getId());
-
-						Location location = locationBean.getLocationIfExist(streetAddress,
-								Integer.parseInt(streetNumber), postalCode, city, country.getId());
-						if (location != null) {
-							// location exists
-							newUser.setLocationId(location.getId());
-						} else {
-							// location doesn't exist, add location
-							newUser.setLocationId(locationBean.addLocationAndReturnId(location));
-						}
-					} else {
-						// the country does not exist and therefore neither does the location
-						int newCountryId = countryBean.addAndReturnId(new Country(0, countryName));
-						newUser.setCountryId(newCountryId);
-						int newLocationId = locationBean.addLocationAndReturnId(new Location(0, streetAddress,
-								Integer.parseInt(streetNumber), postalCode, city, newCountryId));
-						newUser.setLocationId(newLocationId);
-					}
-					if (userBean.add(newUser)) {
-						session.setAttribute("notification", new Notification("Registration success!", "success"));
-					}
-
+			if (request.getParameter("addSubcategory") != null) {
+				CategoryBean categoryBean = new CategoryBean();
+				String name = request.getParameter("newCategory");
+				if (name == "") {
+					session.setAttribute("notification", new Notification("Please type category name.", "warning"));
+				} else if (categoryBean.categoryExists(name)) {
+					session.setAttribute("notification", new Notification("Category already exist.", "warning"));
 				} else {
-					session.setAttribute("notification", new Notification("Username is already teaken.", "error"));
-					address = "/WEB-INF/pages/users.jsp";
+					categoryBean.addCategory(new Category(0, name));
+					session.setAttribute("notification", new Notification("Category successfully added.", "success"));
 				}
 			} else {
-				session.setAttribute("notification", new Notification("All fields are required.", "warning"));
+				address = "/WEB-INF/pages/categories.jsp";
+			}
+		} else if (action.equals("newSubcategory")) {
+			if (request.getParameter("addSubcategory") != null) {
+				System.out.println("subcategory");
+				CategoryBean categoryBean = new CategoryBean();
+				String newSubscategoryName = request.getParameter("newSubcategoryName");
+				String selectedSubcategory = request.getParameter("parentCategorySelect");
+				int parentCategoryId = Integer.parseInt(selectedSubcategory);
+				if (selectedSubcategory == null) {
+					session.setAttribute("notification", new Notification("Please select parent category.", "warning"));
+				} else if (newSubscategoryName == null) {
+					session.setAttribute("notification", new Notification("Please type subcategory name.", "warning"));
+				} else {
+					categoryBean.addSubcategory(parentCategoryId, new Category(0, newSubscategoryName));
+					address = "/WEB-INF/pages/categories.jsp";
+					session.setAttribute("notification",
+							new Notification("Subcategory successfully added.", "success"));
+				}
+			} else {
+				address = "/WEB-INF/pages/categories.jsp";
+			}
+		} else if (action.equals("addUser")) {
+			if (request.getParameter("saveUser") != null) {
+				UserBean userBean = new UserBean();
+				CountryBean countryBean = new CountryBean();
+				LocationBean locationBean = new LocationBean();
+
+				String username = request.getParameter("username");
+				String firstName = request.getParameter("firstName");
+				String lastName = request.getParameter("lastName");
+				String password = request.getParameter("password");
+				String email = request.getParameter("email");
+
+				String countryName = request.getParameter("country");
+				String city = request.getParameter("city");
+				String streetAddress = request.getParameter("streetAddress");
+				String streetNumber = request.getParameter("streetNumber");
+				String postalCode = request.getParameter("postalCode");
+
+				if (userBean.allFieldsFilled(username, password, firstName, lastName, email, countryName, city,
+						streetAddress, streetNumber, postalCode)) {
+					if (!userBean.isUsernameTeaken(username)) {
+						User newUser = new User(0, username, password, firstName, lastName, email, 0);
+						newUser.setCountryId(-1);
+						newUser.setLocationId(-1);
+
+						Country country = countryBean.getCountryWithName(countryName);
+						if (country != null) {
+							// country exists, check if location exists
+							newUser.setCountryId(country.getId());
+
+							Location location = locationBean.getLocationIfExist(streetAddress,
+									Integer.parseInt(streetNumber), postalCode, city, country.getId());
+							if (location != null) {
+								// location exists
+								newUser.setLocationId(location.getId());
+							} else {
+								// location doesn't exist, add location
+								newUser.setLocationId(locationBean.addLocationAndReturnId(location));
+							}
+						} else {
+							// the country does not exist and therefore neither does the location
+							int newCountryId = countryBean.addAndReturnId(new Country(0, countryName));
+							newUser.setCountryId(newCountryId);
+							int newLocationId = locationBean.addLocationAndReturnId(new Location(0, streetAddress,
+									Integer.parseInt(streetNumber), postalCode, city, newCountryId));
+							newUser.setLocationId(newLocationId);
+						}
+						if (userBean.add(newUser)) {
+							session.setAttribute("notification", new Notification("Registration success!", "success"));
+						}
+
+					} else {
+						session.setAttribute("notification", new Notification("Username is already teaken.", "error"));
+						address = "/WEB-INF/pages/users.jsp";
+					}
+				} else {
+					session.setAttribute("notification", new Notification("All fields are required.", "warning"));
+					address = "/WEB-INF/pages/users.jsp";
+				}
+				address = "/WEB-INF/pages/users.jsp";
+			} else {
 				address = "/WEB-INF/pages/users.jsp";
 			}
-			address = "/WEB-INF/pages/users.jsp";
 		} else if (action.equals("deleteCategory")) {
 			if (request.getParameter("categoryId") != null) {
 				CategoryBean categoryBean = new CategoryBean();

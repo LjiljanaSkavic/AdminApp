@@ -28,7 +28,6 @@ body {
 
 .add-category-wrapper input,
 .add-subcategory-wrapper input {
-	width: 100%;
 	padding: 5px;
 	margin: 5px 0;
 	border: 1px solid #ccc;
