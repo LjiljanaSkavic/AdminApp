@@ -13,59 +13,56 @@ response.setHeader("Expires", "0"); // Proxies
 <meta charset="ISO-8859-1">
 <title>Edit user</title>
 <link href="styles/shared.css" rel="stylesheet">
-<link href="styles/edit-user.css" rel="stylesheet">
+<link href="styles/add-user.css" rel="stylesheet">
 <script src="scripts/notification.js" type="text/javascript"></script>
+</head>
 </head>
 <body>
 	<jsp:include page="nav-bar.jsp" />
 	<jsp:include page="notification.jsp" />
 	<div class="container">
-		<form method="POST" action="?action=editUser">
-			<input type="hidden" name="userId"
-				value="<%=request.getParameter("userId")%>">
+		<form method="POST" action="?action=newUser">
 			<div class="input-label-wrapper">
 				<span>Username</span> <input type="text" name="username"
-					id="username" value="<%=userBean.getUserForEdit().getUsername()%>">
+					id="username" />
 			</div>
 			<div class="input-label-wrapper">
 				<span>First name</span> <input type="text" name="firstName"
-					id="firstName"
-					value="<%=userBean.getUserForEdit().getFirstName()%>">
+					id="firstName" />
 			</div>
 			<div class="input-label-wrapper">
 				<span>Last name</span> <input type="text" name="lastName"
-					id="lastName" value="<%=userBean.getUserForEdit().getLastName()%>">
+					id="lastName" />
 			</div>
 			<div class="input-label-wrapper">
-				<span>Email</span> <input type="email" name="email" id="email"
-					value="<%=userBean.getUserForEdit().getEmail()%>">
+				<span>Email</span> <input type="email" name="email" id="email">
 			</div>
 			<div class="input-label-wrapper">
-				<span>Country</span> <input type="text" name="country" id="country"
-					value="<%=userBean.getUserForEdit().getCountry().getName()%>">
+				<span>Password</span> <input type="password" name="password"
+					id="password" />
 			</div>
 			<div class="input-label-wrapper">
-				<span>City</span> <input type="text" name="city" id="city"
-					value="<%=userBean.getUserForEdit().getLocation().getCity()%>">
+				<span>Country</span> <input type="text" name="country" id="country" />
+			</div>
+			<div class="input-label-wrapper">
+				<span>City</span> <input type="text" name="city" id="city" />
 			</div>
 			<div class="input-label-wrapper">
 				<span>Street address</span> <input type="text" name="streetAddress"
-					id="streetAddress"
-					value="<%=userBean.getUserForEdit().getLocation().getStreetAddress()%>">
+					id="streetAddress" />
 			</div>
 			<div class="input-label-wrapper">
 				<span>Street number</span> <input type="number" name="streetNumber"
-					id="streetNumber"
-					value="<%=userBean.getUserForEdit().getLocation().getStreetNumber()%>">
+					id="streetNumber" />
 			</div>
 			<div class="input-label-wrapper">
 				<span>Postal code</span> <input type="text" name="postalCode"
-					id="postalCode"
-					value="<%=userBean.getUserForEdit().getLocation().getPostalCode()%>">
+					id="postalCode" />
 			</div>
 			<div class="button-wrapper">
 				<button type="submit" name="cancel" class="cancel-button">Cancel</button>
-				<button type="submit" name="save" class="save-button">Save</button>
+				<button type="submit" name="save" class="save-button">Add
+					user</button>
 			</div>
 		</form>
 	</div>

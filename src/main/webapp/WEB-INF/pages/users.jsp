@@ -18,38 +18,15 @@ response.setHeader("Expires", "0"); // Proxies
 <link href="styles/shared.css" rel="stylesheet">
 <link href="styles/users.css" rel="stylesheet">
 <script src="scripts/notification.js" type="text/javascript"></script>
-<script src="scripts/notify-cancel.js" type="text/javascript"></script>
-<script src="scripts/toggle-add-user.js" type="text/javascript"></script>
-<style>
-body {
-	margin: 0;
-	padding: 0;
-}
-</style>
 </head>
 <body>
 	<jsp:include page="nav-bar.jsp" />
 	<jsp:include page="notification.jsp" />
 	<div class="container">
-		<button id="add-user-button" class="add-button">Add user</button>
-		<div class="add-user-wrapper" style="display: none">
-			<span>Add user</span>
-			<form method="POST" action="?action=addUser">
-				Username <input type="text" name="username" id="username" /> <br></br>
-				First name <input type="text" name="firstName" id="firstName" /> <br></br>
-				Last name <input type="text" name="lastName" id="lastName" /> <br></br>
-				Email <input type="email" name="email" id="email" /> <br></br>
-				Password <input type="password" name="password" id="password" /> <br></br>
-				Country <input type="text" name="country" id="country" /> <br></br>
-				City <input type="text" name="city" id="city" /> <br></br> Street
-				address <input type="text" name="streetAddress" id="streetAddress" />
-				<br></br> Street number <input type="number" name="streetNumber"
-					id="streetNumber" /> <br></br> Postal code <input type="text"
-					name="postalCode" id="postalCode" /> <br></br>
-					<button type="submit" class="users-cancel-button" name="cancel">Cancel</button>
-				<button type="submit" id="save-user-button" name="saveUser">Save</button>
-			</form>
-		</div>
+		<form method="POST" action="?action=showAddUser">
+			<button type="submit" id="add-user-button" class="add-button">Add
+				user</button>
+		</form>
 		<table class="table">
 			<tr>
 				<th>Username</th>
@@ -108,7 +85,8 @@ body {
 	if (notification != null) {
 	%>
 	<script>
-    showNotification('<%=notification.getMessage()%>', '<%=notification.getType()%>');
+    showNotification('<%=notification.getMessage()%>', '<%=notification.getType()%>
+		');
 	</script>
 	<%
 	}

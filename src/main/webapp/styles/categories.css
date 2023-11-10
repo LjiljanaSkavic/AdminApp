@@ -3,44 +3,6 @@
 body {
 	margin: 0;
 	padding: 0;
-}
-
-.add-categories-wrapper {
-	padding-top: 30px;
-}
-
-.add-category-wrapper h3,
-.add-subcategory-wrapper h3 {
-	margin: 0;
-	padding: 5px;
-	background-color: #007bff;
-	/* Adjust the color as needed */
-	color: #fff;
-	border-top-left-radius: 5px;
-	border-top-right-radius: 5px;
-}
-
-.add-category-wrapper span,
-.add-subcategory-wrapper span {
-	display: block;
-	margin-top: 10px;
-}
-
-.add-category-wrapper input,
-.add-subcategory-wrapper input {
-	padding: 5px;
-	margin: 5px 0;
-	border: 1px solid #ccc;
-	border-radius: 5px;
-}
-
-.add-category-wrapper button,
-.add-subcategory-wrapper button {
-	background-color: #007bff;
-	/* Adjust the button color as needed */
-	color: #fff;
-	padding: 5px 10px;
-	border: none;
-	border-radius: 5px;
-	cursor: pointer;
+	widht: 100vw;
+	background-color: #f0f0f0;
 }

@@ -1,47 +1,67 @@
 @charset "ISO-8859-1";
 
-.container {
-	margin-left: 14%;
-}
-
 button {
 	cursor: pointer;
 }
 
-.delete-button, .edit-button {
+.container {
+	margin-top: 45px;
+	background-color: #f0f0f0;
+	height: 100vh;
+}
+
+.edit-button,
+.delete-button {
 	width: 100%;
 	color: white;
-	background-color: #007bff;
-	padding: 4px 4px;
-	margin: 4px 0;
+	border-radius: 5px;
 	border: none;
 	cursor: pointer;
+	max-width: 60px;
+	padding: 4px 4px;
+}
+
+.edit-button {
+	background-color: #007bff;
 
 	&:hover {
 		background-color: #0056b3;
 	}
 }
 
-.add-button{
+
+.delete-button {
+	background-color: #FF5733;
+
+	&:hover {
+		background-color: #e62900;
+	}
+}
+
+.add-button {
 	width: 20%;
 	color: white;
 	background-color: #007bff;
-	padding: 8px 8px;
-	margin: 4px 0;
+	padding: 10px 20px;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 16px;
 	border: none;
 	cursor: pointer;
+	margin: 16px 0;
+	float: right;
 
 	&:hover {
 		background-color: #0056b3;
 	}
-	
+
 }
 
 .table {
 	font-family: Arial, Helvetica, sans-serif;
 	border-collapse: collapse;
-	width: 98%;
-	margin-top: 16px;
+	background-color: #f0f0f0;
+	width: 100%;
 }
 
 .table td,
@@ -51,9 +71,64 @@ button {
 }
 
 .table th {
-	padding-top: 4px;
-	padding-bottom: 4px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 	text-align: left;
 	background-color: #007bff;
 	color: white;
+}
+
+tr:hover {
+	background-color: #e3e3e3;
+}
+
+.button-wrapper {
+	display: flex;
+	justify-content: flex-end;
+	gap: 16px;
+	margin-top: 16px;
+}
+
+.button-wrapper button {
+	padding: 8px 8px;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 16px;
+}
+
+.cancel-button {
+	border: 1px solid black;
+}
+
+.cancel-button:hover {
+	background-color: lightgray;
+}
+
+.save-button {
+	border: none;
+	background-color: #007bff;
+	color: white;
+}
+
+.save-button:hover {
+	background-color: #0056b3;
+}
+
+.input-label-wrapper span {
+	padding: 8px;
+	border: 1px solid #ccc;
+	color: #007bff;
+	border-radius: 5px;
+	border-color: #007bff;
+	font-size: 16px;
+	margin-bottom: 5px;
+}
+
+.input-label-wrapper input {
+	padding: 8px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-size: 16px;
+	margin-bottom: 5px;
+	margin-left: 8px;
 }

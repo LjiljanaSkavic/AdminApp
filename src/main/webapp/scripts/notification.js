@@ -1,5 +1,6 @@
 function showNotification(message, type) {
     const notificationElement = document.getElementById('notification');
+    console.log('yo');
     if (message) {
         notificationElement.innerText = message;
 

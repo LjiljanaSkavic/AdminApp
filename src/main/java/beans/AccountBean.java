@@ -18,11 +18,10 @@ public class AccountBean implements Serializable {
 	public boolean checkLogin(String username, String password) throws NoSuchAlgorithmException {
 		if ((account = AccountDAO.selectByUsernameAndPassword(username, password)) != null) {
 			if (account.getAccountType() == 1) {
-				isLoggedIn = true;
-				return true;
+				this.isLoggedIn = true;
 			}
 		}
-		return false;
+		return this.isLoggedIn;
 	}
 
 	public boolean loginFieldsFilled(String username, String password) {

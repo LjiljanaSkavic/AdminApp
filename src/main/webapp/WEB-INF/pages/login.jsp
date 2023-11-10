@@ -5,6 +5,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // H
 response.setHeader("Pragma", "no-cache"); // HTTP 1.0
 response.setHeader("Expires", "0"); // Proxies
 %>
+<%@page import="dto.Notification"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,10 +32,11 @@ response.setHeader("Expires", "0"); // Proxies
 		</div>
 	</form>
 	<%
-	if (session.getAttribute("notification") != null) {
+	Notification notification = (Notification) session.getAttribute("notification");
+	if (notification != null) {
 	%>
 	<script>
-    	showNotification('<%=session.getAttribute("notification").toString()%>', 'error');
+    showNotification('<%=notification.getMessage()%>', '<%=notification.getType()%>');
 	</script>
 	<%
 	}

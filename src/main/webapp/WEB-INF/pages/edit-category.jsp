@@ -19,17 +19,18 @@ response.setHeader("Expires", "0"); // Proxies
 	<jsp:include page="nav-bar.jsp" />
 	<jsp:include page="notification.jsp" />
 	<div class="container">
-		<span>Edit category</span>
-		<span>
-			Rename
-			<%=request.getParameter("categoryName")%></span>
-		<span>New category name :</span>
 		<form method="POST" action="?action=editCategory">
-			<div>
-				<input type="hidden" name="categoryId"
-					value="<%=request.getParameter("categoryId")%>"> <input
-					type="text" placeholder="New category name" name="newName">
-				<button type="submit">Save</button>
+			<h3>
+				Rename category
+				'<%=request.getParameter("categoryName")%>'</h3>
+			<input type="hidden" name="categoryId"
+				value="<%=request.getParameter("categoryId")%>">
+			<div class="input-label-wrapper">
+				<span>New category name</span> <input type="text" name="newName">
+			</div>
+			<div class="button-wrapper">
+				<button type="submit" name="cancel" class="cancel-button">Cancel</button>
+				<button type="submit" name="save" class="save-button">Save</button>
 			</div>
 		</form>
 	</div>

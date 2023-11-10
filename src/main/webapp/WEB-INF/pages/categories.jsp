@@ -19,23 +19,28 @@ response.setHeader("Expires", "0"); // Proxies
 <link href="styles/shared.css" rel="stylesheet">
 <link href="styles/categories.css" rel="stylesheet">
 <script src="scripts/notification.js" type="text/javascript"></script>
-<script src="scripts/toggle-add-categories.js" type="text/javascript"></script>
 </head>
 <body>
 	<jsp:include page="nav-bar.jsp" />
 	<jsp:include page="notification.jsp" />
 	<div class="container">
-		<button id="add-category-button" class="add-button">Add
-			categories</button>
+		<form method="POST" action="?action=showAddCategories">
+			<button type="submit" id="add-category-button" class="add-button">Add
+				categories</button>
+		</form>
 		<div class="add-categories-wrapper" style="display: none">
 			<form method="POST" action="?action=newCategory">
 				<div class="add-category-wrapper">
 					<h3>ADD CATEGORY</h3>
-					<span>Category name</span> <input type="text" name="newCategory"
-						id="newCategory" />
-					<button type="submit" id="cancel-add-category"
-						name="cancelAddCategory">Cancel</button>
-					<button type="submit" name=""addCategory id="save-category-button">Save</button>
+					<div class="input-label-wrapper">
+						<span>Category name</span> <input type="text" name="newCategory"
+							id="newCategory" />
+					</div>
+					<div class="button-wrapper">
+						<button type="submit" name="cancel" class="cancel-button">Cancel</button>
+						<button type="submit" name="save" class="save-button">Add
+							category</button>
+					</div>
 				</div>
 			</form>
 
@@ -49,11 +54,16 @@ response.setHeader("Expires", "0"); // Proxies
 						for (Category category : categoryBean.getAllCategories())
 							out.print("<option value=" + category.getId() + ">" + category.getName() + "</option>");
 						%>
-					</select> <span>Subcategory name</span> <input type="text"
-						name="newSubcategoryName" id="newSubcategory" />
-						<button type="submit" id="cancel-add-subcategory"
-						name="cancelAddSubcategory">Cancel</button>
-					<button id="save-subcategory-button" type="submit" name="addSubcategory">Save</button>
+					</select>
+					<div class="input-label-wrapper">
+						<span>Subcategory name</span> <input type="text"
+							name="newSubcategoryName" id="newSubcategory" />
+					</div>
+					<div class="button-wrapper">
+						<button type="submit" name="cancel" class="cancel-button">Cancel</button>
+						<button type="submit" name="save" class="save-button">Add
+							subcategory</button>
+					</div>
 				</div>
 			</form>
 		</div>
