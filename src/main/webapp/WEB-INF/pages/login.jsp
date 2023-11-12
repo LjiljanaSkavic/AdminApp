@@ -17,19 +17,18 @@ response.setHeader("Expires", "0"); // Proxies
 </head>
 <body>
 	<jsp:include page="notification.jsp" />
-	<form method="POST" action="?action=login">
-		<div class="form-wrapper">
-			<div class="field-wrapper">
-				<p class="field-name">Username</p>
-				<input type="text" name="username" id="username" class="field-value" />
-			</div>
-			<div class="field-wrapper">
-				<p class="field-name">Password</p>
-				<input type="password" name="password" id="password"
-					class="field-value" />
-			</div>
-			<button class="login-button" type="submit" name="submit">Login</button>
-		</div>
+	<form action="login.jsp" method="post">
+	   <div class="form-wrapper">
+         <div class="field-wrapper">
+            <p class="field-name">Username</p>
+            <input type="text" name="username" id="username" class="field-value"/>
+         </div>
+         <div class="field-wrapper">
+            <p class="field-name">Password</p>
+            <input type="password" name="password" id="password" class="field-value"/>
+         </div>
+         <button type="submit" name="submit">Login</button>
+      </div>
 	</form>
 	<%
 	Notification notification = (Notification) session.getAttribute("notification");
