@@ -17,7 +17,7 @@ response.setHeader("Expires", "0"); // Proxies
 </head>
 <body>
 	<jsp:include page="notification.jsp" />
-	<form action="login.jsp" method="post">
+	<form action="?action=login" method="post">
 	   <div class="form-wrapper">
          <div class="field-wrapper">
             <p class="field-name">Username</p>
@@ -27,7 +27,7 @@ response.setHeader("Expires", "0"); // Proxies
             <p class="field-name">Password</p>
             <input type="password" name="password" id="password" class="field-value"/>
          </div>
-         <button type="submit" name="submit">Login</button>
+         <button type="submit" name="submit" class="login-button">Login</button>
       </div>
 	</form>
 	<%

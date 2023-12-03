@@ -74,16 +74,16 @@ public class Controller extends HttpServlet {
 			}
 		} else if (action.equals("users")) {
 			address = "/WEB-INF/pages/users.jsp";
+		} else if (action.equals("logging")) {
+			address = "/WEB-INF/pages/logging.jsp";
 		} else if (action.equals("categories")) {
 			address = "/WEB-INF/pages/categories.jsp";
 		} else if (action.equals("showAddCategories")) {
 			address = "/WEB-INF/pages/add-categories.jsp";
 		} else if (action.equals("newCategory")) {
 			if (request.getParameter("save") != null) {
-				System.out.println(request.getParameter("save"));
 				CategoryBean categoryBean = new CategoryBean();
 				String name = request.getParameter("newCategory");
-				System.out.println("name " + name);
 				if (name == "") {
 					session.setAttribute("notification", new Notification("Please type category name.", "warning"));
 					address = "/WEB-INF/pages/add-categories.jsp";
@@ -103,8 +103,6 @@ public class Controller extends HttpServlet {
 				CategoryBean categoryBean = new CategoryBean();
 				String newSubscategoryName = request.getParameter("newSubcategoryName");
 				String selectedSubcategory = request.getParameter("parentCategorySelect");
-				System.out.println("newSubscategoryName " + newSubscategoryName);
-				System.out.println("selectedSubcategory " + selectedSubcategory);
 				if (selectedSubcategory == "") {
 					session.setAttribute("notification", new Notification("Please select parent category.", "warning"));
 					address = "/WEB-INF/pages/add-categories.jsp";
@@ -125,7 +123,6 @@ public class Controller extends HttpServlet {
 			address = "/WEB-INF/pages/add-user.jsp";
 		} else if (action.equals("newUser")) {
 			if (request.getParameter("save") != null) {
-				System.out.println("save");
 				UserBean userBean = new UserBean();
 				CountryBean countryBean = new CountryBean();
 				LocationBean locationBean = new LocationBean();
@@ -150,14 +147,12 @@ public class Controller extends HttpServlet {
 						newUser.setLocationId(-1);
 
 						Country country = countryBean.getCountryWithName(countryName);
-						System.out.println("country " + country);
 						if (country != null) {
 							// country exists, check if location exists
 							newUser.setCountryId(country.getId());
 
 							Location location = locationBean.getLocationIfExist(streetAddress,
 									Integer.parseInt(streetNumber), postalCode, city, country.getId());
-							System.out.println("location " + location);
 							if (location != null) {
 								// location exists
 								newUser.setLocationId(location.getId());
@@ -185,7 +180,6 @@ public class Controller extends HttpServlet {
 						address = "/WEB-INF/pages/add-user.jsp";
 					}
 				} else {
-					System.out.println("all fileds are req");
 					session.setAttribute("notification", new Notification("All fields are required.", "warning"));
 					address = "/WEB-INF/pages/add-user.jsp";
 				}
@@ -258,32 +252,21 @@ public class Controller extends HttpServlet {
 		} else if (action.equals("editUser")) {
 			if (request.getParameter("save") != null) {
 				int userdId = Integer.parseInt(request.getParameter("userId"));
-				System.out.println("EDITIIIIIIIING");
 				UserBean userBean = new UserBean();
 				CountryBean countryBean = new CountryBean();
 				LocationBean locationBean = new LocationBean();
 
 				String username = request.getParameter("username");
-				System.out.println(username);
 				String firstName = request.getParameter("firstName");
-				System.out.println(firstName);
 				String lastName = request.getParameter("lastName");
-				System.out.println(lastName);
 				String password = request.getParameter("password");
-				System.out.println("password " + password);
 				String email = request.getParameter("email");
-				System.out.println(email);
 
 				String countryName = request.getParameter("country");
-				System.out.println(countryName);
 				String city = request.getParameter("city");
-				System.out.println(countryName);
 				String streetAddress = request.getParameter("streetAddress");
-				System.out.println(streetAddress);
 				String streetNumber = request.getParameter("streetNumber");
-				System.out.println(streetNumber);
 				String postalCode = request.getParameter("postalCode");
-				System.out.println(postalCode);
 
 				if (userBean.withoutPasswordFieldsFilled(username, firstName, lastName, email, countryName, city,
 						streetAddress, streetNumber, postalCode)) {
@@ -291,14 +274,12 @@ public class Controller extends HttpServlet {
 					editedUser.setCountryId(-1);
 					editedUser.setLocationId(-1);
 					Country country = countryBean.getCountryWithName(countryName);
-					System.out.println(country);
 					if (country != null) {
 						// country exists, check if location exists
 						editedUser.setCountryId(country.getId());
 
 						Location location = locationBean.getLocationIfExist(streetAddress,
 								Integer.parseInt(streetNumber), postalCode, city, country.getId());
-						System.out.println(location);
 						if (location != null) {
 							editedUser.setLocationId(location.getId());
 						} else {
@@ -322,7 +303,6 @@ public class Controller extends HttpServlet {
 						session.setAttribute("notification", new Notification("Error while updating user!", "error"));
 					}
 				} else {
-					System.out.println("no all fields");
 					address = "/WEB-INF/pages/edit-user.jsp";
 					session.setAttribute("notification", new Notification("All fields are required.", "warning"));
 				}

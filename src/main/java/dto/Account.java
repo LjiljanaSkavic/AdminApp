@@ -1,7 +1,10 @@
 package dto;
 
-public class Account {
+import java.io.Serializable;
 
+public class Account implements Serializable {
+
+	private static final long serialVersionUID = -5121838971808441865L;
 	private int id;
 	private String username;
 	private String password;

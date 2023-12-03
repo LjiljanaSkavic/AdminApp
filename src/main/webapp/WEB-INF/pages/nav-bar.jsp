@@ -21,6 +21,9 @@ response.setHeader("Expires", "0"); // Proxies
 		<li><a
 			class="<%=request.getParameter("action").toLowerCase().contains("categor") ? "active" : ""%>"
 			href="?action=categories">Categories</a></li>
+		<li><a
+			class="<%=request.getParameter("action").toLowerCase().contains("logging") ? "active" : ""%>"
+			href="?action=logging">Logging</a></li>
 		<li class="logout"><a
 			class="<%=request.getParameter("action").toLowerCase().contains("logout") ? "active" : ""%>"
 			href="?action=logout">Logout</a></li>
